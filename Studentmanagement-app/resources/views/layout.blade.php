@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
     <style>
         .sidebar {
             margin: 0;
@@ -66,46 +64,42 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                        <h1 class="h3 mb-0">Student Management Project</h1>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <h1 class="h3 mb-0">Student Management Project</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </nav>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <div class="sidebar">
-                    <a class="active" href="#home">Home</a>
-                    <a href="{{ url('/students') }}">Student</a>
-                    <a href="#contact">Teacher</a>
-                    <a href="#contact">Courses</a>
-                    <a href="#about">Enrollment</a>
-                    <a href="#about">Payment</a>
-                </div>
-            </div>
-
-            <!-- Main Content -->
-            <div class="col-md-9">
-                
-                    @yield('content')
-               
-            </div>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
         </div>
     </div>
 
-    <!-- JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="sidebar">
+                <a class="{{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                <a class="{{ request()->is('students*') ? 'active' : '' }}" href="{{ url('/students') }}">Student</a>
+                <a class="{{ request()->is('teachers*') ? 'active' : '' }}" href="{{ url('/teachers') }}">Teacher</a>
+                <a class="{{ request()->is('courses*') ? 'active' : '' }}" href="{{ url('/courses') }}">Courses</a>
+                <a class="{{ request()->is('batches*') ? 'active' : '' }}" href="{{ url('/batches') }}">Batches</a>
+                <a class="{{ request()->is('enrollments*') ? 'active' : '' }}" href="{{ url('/enrollments') }}">Enrollment</a>
+                <a class="{{ request()->is('payments*') ? 'active' : '' }}" href="{{ url('/payments') }}">Payment</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            @yield('content')
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-                         

@@ -81,9 +81,9 @@ class StudentController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id) : RedirectResponse
-    {
+    { 
         //
          Student::destroy($id);
-        return redirect('student')->with('flash_message', 'Student deleted!'); 
+        return redirect('students')->with('flash_message', 'Student deleted!'); 
     }
 }
